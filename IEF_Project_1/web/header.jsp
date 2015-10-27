@@ -16,6 +16,9 @@
 				<i class="fa fa-search"></i>
 			</div>
 			<!-- Custom Search Ends -->
+                        
+                        
+                        
 
 			<!-- Mini right nav starts -->
 			<div class="pull-right">
