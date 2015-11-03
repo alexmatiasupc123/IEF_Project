@@ -128,7 +128,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','admin','Alex','Matias','73257029','ADM','ACT','1995-02-09','992962762','alexmatiasupc123@gmail.com'),(2,'u001','123','Miguel','Aybar','73257029','ADM','ACT','1995-09-09','999999999','miguel_aybar@gmail.com');
+INSERT INTO `usuario` VALUES (1,'admin','admin','Alex','Matias','73257029','ADM','ACT','1995-02-09','992962762','alexmatiasupc123@gmail.com'),(2,'u001','123','Miguel','Aybar','73257029','CLI','ACT','1995-09-09','999999999','miguel_aybar@gmail.com');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
