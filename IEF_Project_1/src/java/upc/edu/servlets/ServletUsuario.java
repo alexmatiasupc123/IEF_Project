@@ -62,6 +62,8 @@ public class ServletUsuario extends HttpServlet {
         String accion=(String)request.getParameter("accion");
         if(accion!=null)
         {
+            String res="";
+            
             if(accion.equals("salir"))
             {
                 HttpSession sesion=request.getSession();
@@ -69,10 +71,26 @@ public class ServletUsuario extends HttpServlet {
                 response.sendRedirect("index.jsp");
                 return;
             }
+            
+            request.setAttribute("accion", accion);
+            
+            if(accion.equals("principal"))
+                request.getRequestDispatcher("main.jsp").forward(request, response);
+            else if(accion.equals("estado"))
+                request.getRequestDispatcher("estadoCuenta.jsp").forward(request, response);
+            else if(accion.equals("ingresar"))
+                request.getRequestDispatcher("ingresarMonto.jsp").forward(request, response);
+            else if(accion.equals("retirar"))
+                request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);
+            else if(accion.equals("adminu"))
+                request.getRequestDispatcher("adminUsuarios.jsp").forward(request, response);
+            else if(accion.equals("adminc"))
+                request.getRequestDispatcher("adminCuentas.jsp").forward(request, response);
+                     
         }
               
         System.out.println("AQUI LLEGÓ BIEN :D");
-        request.getRequestDispatcher("main.jsp").forward(request, response);
+        //request.getRequestDispatcher("main.jsp").forward(request, response);
         
         
     }
@@ -105,6 +123,7 @@ public class ServletUsuario extends HttpServlet {
             HttpSession sesion=request.getSession(true);
             sesion.setAttribute("usuario", user);
             sesion.setAttribute("nombre", lista.get(0).getNombre()+" "+lista.get(0).getApellido());
+            sesion.setAttribute("rol", lista.get(0).getRol());
                         
             request.getRequestDispatcher("main.jsp").forward(request, response);
         

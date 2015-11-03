@@ -70,7 +70,8 @@
 			</div>
 			<!-- Top Bar ends -->
 
-			
+			<!-- Main Container starts -->
+			<div class="main-container">
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
@@ -585,8 +586,11 @@
                                 
                                                    
                                                 
-			
-                                                                                                  
+			</div>
+			<!-- Main Container ends -->
+
+                                                <%@include file="right-sidebar.jsp" %>
+                                                   
                                                 <%@include file="footer.jsp" %>
 			
                 </div>

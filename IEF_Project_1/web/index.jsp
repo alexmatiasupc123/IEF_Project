@@ -51,6 +51,13 @@
         <!-- Container Fluid starts -->
 		<div class="container-fluid">
 			<div class="row">
+                            
+                            <div class="row">&nbsp;</div>
+                             <div class="row">&nbsp;</div>
+                              <div class="row">&nbsp;</div>
+                               <div class="row">&nbsp;</div>
+                                 <div class="row">&nbsp;</div>
+                                
 				<div class="col-md-push-4 col-md-4 col-sm-push-3 col-sm-6 col-sx-12">
 					
 					<!-- Header end -->
@@ -79,8 +86,7 @@
 									</div>
 									<input type="submit" value="Entrar" class="btn btn-danger btn-lg btn-block">
 								</form>
-								<a href="#forgot-pwd" class="underline text-info">Se te olvidó tu contraseña?</a>
-								<a href="#register">Ya tienes una cuenta? <span class="text-danger">Regístrate</span></a>
+								<a href="#forgot-pwd" class="underline text-info">Se te olvidó tu contraseña?</a>								
 							</div>								
 
 						</div>
