@@ -45,7 +45,7 @@
 			<!-- Top Bar starts -->
 			<div class="top-bar">
 				<div class="page-title">
-					Administración de Usuarios
+					<i class="fa fa-users"></i>&nbsp Administración de Usuarios
 				</div>
 				<ul class="stats hidden-xs">
 					<li>

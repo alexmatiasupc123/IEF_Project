@@ -3,7 +3,8 @@
     Created on : 18/09/2015, 05:48:43 PM
     Author     : Alex
 --%>
-
+<% String nombreCompleto=session.getAttribute("nombre").toString(); %>
+                                        
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido :)</title>        
+        <title>Bienvenido, Sr. <%= nombreCompleto %> </title>        
         <link rel="icon" type="text/x-icon" href="assets/img/person.ico"/>       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
@@ -45,7 +46,7 @@
 			<!-- Top Bar starts -->
 			<div class="top-bar">
 				<div class="page-title">
-					Dashboard
+					<i class="fa fa-dashboard"></i>&nbsp Dashboard
 				</div>
 				<ul class="stats hidden-xs">
 					<li>

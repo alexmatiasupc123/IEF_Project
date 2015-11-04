@@ -45,7 +45,7 @@
 			<!-- Top Bar starts -->
 			<div class="top-bar">
 				<div class="page-title">
-					Estado de Cuenta
+					<i class="fa fa-university"></i>&nbsp Estado de Cuenta
 				</div>
 				<ul class="stats hidden-xs">
 					<li>

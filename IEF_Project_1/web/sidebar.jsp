@@ -42,7 +42,7 @@
 					<li     <% if(accion.equals("principal")){ %> class="highlight"  <%}%> >
                                            
 						<a href="ServletUsuario?accion=principal">
-							<i class="fa fa-desktop"></i>
+							<i class="fa fa-dashboard"></i>
 							<span>Dashboard</span>
                                                                                                                 
                                                                                                                 <% if(accion.equals("principal")){ %>
@@ -52,10 +52,13 @@
 					</li>
                                         
                                                                       <%if(rol.equals("CLI")){ %>
-					<li>
+					<li     <% if(accion.equals("estado")){ %> class="highlight"  <%}%> >
 						<a href="ServletUsuario?accion=estado">
 							<i class="fa fa-university"></i> 
 							<span>Estado de Cuenta</span>
+                                                                                                                <% if(accion.equals("estado")){ %>
+							<span class="current-page"></span>
+                                                                                                                <%}%>
 						</a>
 					</li>
 					<li     <% if(accion.equals("ingresar")){ %> class="highlight"  <%}%> >
@@ -68,25 +71,34 @@
                                                                                                                 <%}%>
 						</a>
 					</li>
-					<li>
+					<li     <% if(accion.equals("retirar")){ %> class="highlight"  <%}%> >
 						<a href="ServletUsuario?accion=retirar">
 							<i class="fa fa-minus-square"></i>  
 							<span>Retirar Monto</span>
+                                                                                                                <% if(accion.equals("retirar")){ %>
+							<span class="current-page"></span>
+                                                                                                                <%}%>
 						</a>
 					</li>
                                                                                 
                                                                       <%}else{ %>
                                                                 
-					<li>
+					<li     <% if(accion.equals("adminu")){ %> class="highlight"  <%}%> >
 						<a href="ServletUsuario?accion=adminu">
 							<i class="fa fa-users"></i> 
 							<span>Admin. Usuarios</span>
+                                                                                                                <% if(accion.equals("adminu")){ %>
+							<span class="current-page"></span>
+                                                                                                                <%}%>
 						</a>
 					</li>
-					<li>
+					<li     <% if(accion.equals("adminc")){ %> class="highlight"  <%}%> >
 						<a href="ServletUsuario?accion=adminc">
 							<i class="fa fa-credit-card"></i> 
 							<span>Admin. Cuentas</span>
+                                                                                                                <% if(accion.equals("adminc")){ %>
+							<span class="current-page"></span>
+                                                                                                                <%}%>
 						</a>
 					</li>
                                                                             <% } %>

@@ -45,7 +45,7 @@
 			<!-- Top Bar starts -->
 			<div class="top-bar">
 				<div class="page-title">
-					Administración de Cuentas
+					<i class="fa fa-credit-card"></i>&nbsp Administración de Cuentas
 				</div>
 				<ul class="stats hidden-xs">
 					<li>
