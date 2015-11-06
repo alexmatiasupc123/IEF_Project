@@ -102,7 +102,16 @@
 						</a>
 					</li>
                                                                             <% } %>
-                                        
+                                                                                    
+                                                                                    <li <% if(accion.equals("nosotros")){ %> class="highlight"  <%}%> >         
+                                                                                                                <a href="ServletUsuario?accion=nosotros">
+							<i class="fa fa-info-circle"></i> 
+							<span>Acerca de Nosotros</span></a>
+                                                                                                               <% if(accion.equals("nosotros")){ %>
+							<span class="current-page"></span>
+                                                                                                                <%}%>
+                                                                                    </li>
+                                                                            
                                                                                    <li>         
                                                                                                                 <a href="ServletUsuario?accion=salir">
 							<i class="fa fa-sign-out"></i> 

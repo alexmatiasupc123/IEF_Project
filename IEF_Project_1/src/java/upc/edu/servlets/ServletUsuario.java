@@ -86,6 +86,8 @@ public class ServletUsuario extends HttpServlet {
                 request.getRequestDispatcher("adminUsuarios.jsp").forward(request, response);
             else if(accion.equals("adminc"))
                 request.getRequestDispatcher("adminCuentas.jsp").forward(request, response);
+             else if(accion.equals("nosotros"))
+                request.getRequestDispatcher("acercaNosotros.jsp").forward(request, response);
                      
         }
               
@@ -108,7 +110,7 @@ public class ServletUsuario extends HttpServlet {
         
         
          try{
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("JPA_PruebaPU");
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
         EntityManager em=emf.createEntityManager();
         
         Query query=em.createQuery("SELECT u FROM Usuario u where u.codigo=:user and u.clave=:clave", Usuario.class);

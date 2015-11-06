@@ -88,15 +88,16 @@
 									<div class="blog-body">
 										<form class="form-horizontal" role="form">
 										  <div class="form-group">
-										    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-										    <div class="col-sm-10">
-										      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+										    <label for="inputEmail3" class="col-sm-2 control-label">Monto de retiro</label>
+										    <div class="col-sm-4">
+										      <input type="number" min="0" step="0.5" class="form-control" id="inputEmail3" placeholder="S/.">
 										    </div>
 										  </div>
 										  <div class="form-group">
-										    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-										    <div class="col-sm-10">
-										      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+										    <label for="inputPassword3" class="col-sm-2 control-label">Motivo</label>
+										    <div class="col-sm-4">
+                                                                                                                                                                    <textarea class="form-control" rows="5" id="inputPassword3" placeholder="Detalle o descripción "></textarea>
+                                                                                                                                                                    
 										    </div>
 										  </div>
                                                                                                                                                                    <div class="form-group">

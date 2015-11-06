@@ -74,8 +74,11 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-					
+                                                                                        <div class="row">
 
+                                                                                                &nbsp
+                                                                                    </div>
+                                                    
 				</div>
 				<!-- Container fluid ends -->
                                 
