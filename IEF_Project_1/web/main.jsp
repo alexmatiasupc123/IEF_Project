@@ -3,7 +3,7 @@
     Created on : 18/09/2015, 05:48:43 PM
     Author     : Alex
 --%>
-<% String nombreCompleto=session.getAttribute("nombre").toString(); %>
+<% String nombreCompleto=(String)session.getAttribute("nombre"); %>
                                         
 <%@page import="java.util.List"%>
 
@@ -30,12 +30,13 @@
             <link href="assets/fonts/font-awesome.min.css" rel="stylesheet">
         
         
-         <%@include file="validarSesion.jsp" %>
+     
       
        
     </head>   
     <body>
         
+                <%@include file="validarSesion.jsp" %>
             <%@include file="header.jsp" %>
 
             <%@include file="sidebar.jsp" %>

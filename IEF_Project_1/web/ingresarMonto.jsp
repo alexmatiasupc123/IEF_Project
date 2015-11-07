@@ -88,15 +88,26 @@
 									<div class="blog-body">
 										<form class="form-horizontal" role="form">
 										  <div class="form-group">
-										    <label for="inputEmail3" class="col-sm-2 control-label">Monto de depósito</label>
+										    <label for="inputDeposito" class="col-sm-2 control-label">Monto de depósito</label>
 										    <div class="col-sm-4">
-										      <input type="number" min="0" step="0.5" class="form-control" id="inputEmail3" placeholder="S/.">
+										      <input type="number" min="0" step="0.5" class="form-control" id="inputDeposito" placeholder="S/.">
 										    </div>
 										  </div>
+                                                                                                                                                                   <div class="form-group">
+                                                                                                                                                                       <label  for="inputCuenta" class="col-sm-2 control-label">Nro de Cuenta</label>
+                                                                                                                                                                           <div class="col-sm-4">
+                                                                                                                                                                       <select class="form-control" id="inputCuenta">
+												<option value="" disabled selected>Seleccione una cuenta</option>
+												<option>1</option>
+												<option>2</option>
+											</select>
+                                                                                                                                                                               </div>
+										</div>
+                                                                                    
 										  <div class="form-group">
-										    <label for="inputPassword3" class="col-sm-2 control-label">Motivo</label>
+										    <label for="inputMotivo" class="col-sm-2 control-label">Motivo</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                    <textarea class="form-control" rows="5" id="inputPassword3" placeholder="Detalle o descripción "></textarea>
+                                                                                                                                                                    <textarea class="form-control" rows="5" id="inputMotivo" placeholder="Detalle o descripción "></textarea>
                                                                                                                                                                     
 										    </div>
 										  </div>
@@ -106,6 +117,8 @@
                                                                                                                                                                    <button type="submit" class="btn btn-success"><i class="fa fa-usd"></i> Ingresar</button>
                                                                                                                                                                         </div>
                                                                                                                                                                    </div>
+                                                                                                                                                                     
+                                                                                                                                                                    
 										</form>
 									</div>
 								</div>

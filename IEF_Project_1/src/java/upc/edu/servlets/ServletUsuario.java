@@ -83,7 +83,22 @@ public class ServletUsuario extends HttpServlet {
             else if(accion.equals("retirar"))
                 request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);
             else if(accion.equals("adminu"))
+            {
+                   try{
+                            EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
+                            EntityManager em=emf.createEntityManager();
+
+                            Query query=em.createQuery("SELECT u FROM Usuario u", Usuario.class);
+                            List<Usuario> lista=query.getResultList();   
+                            
+                            request.setAttribute("listaUsuarios",lista);
+        
+                    }catch(Exception ex)
+                    {
+                        System.out.println("Error de conexión en el Admin Usu GET");
+                    }      
                 request.getRequestDispatcher("adminUsuarios.jsp").forward(request, response);
+            }
             else if(accion.equals("adminc"))
                 request.getRequestDispatcher("adminCuentas.jsp").forward(request, response);
              else if(accion.equals("nosotros"))

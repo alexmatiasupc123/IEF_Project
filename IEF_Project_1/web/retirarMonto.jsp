@@ -93,6 +93,16 @@
 										      <input type="number" min="0" step="0.5" class="form-control" id="inputEmail3" placeholder="S/.">
 										    </div>
 										  </div>
+                                                                                                                                                                      <div class="form-group">
+                                                                                                                                                                       <label  for="inputCuenta" class="col-sm-2 control-label">Nro de Cuenta</label>
+                                                                                                                                                                           <div class="col-sm-4">
+                                                                                                                                                                       <select class="form-control" id="inputCuenta">
+												<option value="" disabled selected>Seleccione una cuenta</option>
+												<option>1</option>
+												<option>2</option>
+											</select>
+                                                                                                                                                                               </div>
+										</div>
 										  <div class="form-group">
 										    <label for="inputPassword3" class="col-sm-2 control-label">Motivo</label>
 										    <div class="col-sm-4">

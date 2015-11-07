@@ -1,8 +1,8 @@
 <!-- Left sidebar starts -->
 
                                 <% 
-                                        String nombre=session.getAttribute("nombre").toString();
-                                        String rol=session.getAttribute("rol").toString();
+                                        String nombre=(String)session.getAttribute("nombre");
+                                        String rol=(String)session.getAttribute("rol");
                                         
                                         String accion="principal";
                                         String recibir=(String)request.getAttribute("accion");
@@ -51,7 +51,7 @@
 						</a>
 					</li>
                                         
-                                                                      <%if(rol.equals("CLI")){ %>
+                                                                      <%if(rol!=null){ if(rol.equals("CLI")){ %>
 					<li     <% if(accion.equals("estado")){ %> class="highlight"  <%}%> >
 						<a href="ServletUsuario?accion=estado">
 							<i class="fa fa-university"></i> 
@@ -101,7 +101,7 @@
                                                                                                                 <%}%>
 						</a>
 					</li>
-                                                                            <% } %>
+                                                                            <% } } %>
                                                                                     
                                                                                     <li <% if(accion.equals("nosotros")){ %> class="highlight"  <%}%> >         
                                                                                                                 <a href="ServletUsuario?accion=nosotros">

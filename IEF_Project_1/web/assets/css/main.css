@@ -1866,8 +1866,8 @@ ul.recent-tweets {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   color: white;
-  background-color: #d66061;
-  border-color: #d66061; }
+  background-color: #3D5672;
+  border-color: #3D5672; }
 
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -2908,8 +2908,8 @@ ul.plan-details {
   #dt_example .dataTables_length {
     float: left; }
     #dt_example .dataTables_length select {
-      width: 80px;
-      height: 30px;
+      width: 50px;
+      height: 20px;
       margin-bottom: 0; }
   #dt_example .dataTable .progress {
     height: 6px;
@@ -2959,13 +2959,13 @@ ul.plan-details {
         color: white; }
   #dt_example .dataTable .sorting {
     cursor: pointer;
-    background: url(../img/sorting.png) no-repeat center left; }
+    background: url(../img/sorting.png) no-repeat center right; }
   #dt_example .dataTable .sorting_asc {
     cursor: pointer;
-    background: url(../img/sorting_asc.png) no-repeat center left; }
+    background: url(../img/sorting_asc.png) no-repeat center right; }
   #dt_example .dataTable .sorting_desc {
     cursor: pointer;
-    background: url(../img/sorting_desc.png) no-repeat center left; }
+    background: url(../img/sorting_desc.png) no-repeat center right; }
 
 ul.show-stats {
   list-style-type: none;
