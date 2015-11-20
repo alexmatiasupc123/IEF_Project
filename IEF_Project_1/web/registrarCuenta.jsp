@@ -103,7 +103,7 @@
 										<h5 class="blog-title"><i class="fa fa-credit-card"></i>&nbsp Registrar Cuenta </h5>
 									</div>
 									<div class="blog-body">
-										<form class="form-horizontal" role="form" method="post" action="ServletUsuario">
+										<form class="form-horizontal" role="form" method="post" action="ServletCuenta">
 										  
                                                                                                                                                                      
                                                                                                                                                                   
@@ -111,7 +111,7 @@
                                                                                                                                                                     <div class="form-group">
 										    <label for="inputUsuario" class="col-sm-2 control-label">N° Cuenta</label>
 										    <div class="col-sm-4">
-                                                                                        <input style="background-color: lavender;" type="text" class="form-control" name="usuario" id="inputUsuario" value="<%=textoNumCuenta(ncuenta)%>" readonly >
+                                                                                        <input style="background-color: lavender;" type="text" class="form-control" name="ncuenta" id="inputUsuario" value="<%=textoNumCuenta(ncuenta)%>" readonly >
                                                                                                                                                                     <input type="hidden" name="accion" value="insert" >
 										    </div>
 										  </div>
@@ -127,7 +127,7 @@
                                                                                                                                                                    <div class="form-group">
 										    <label for="inputUsuario" class="col-sm-2 control-label">Seleccione Usuario</label>
 										    <div class="col-sm-4">
-                                                                                        <select class="selectpicker" style="background-color: white;"  data-live-search="true" id="inputUsuario" data-size="5">
+                                                                                        <select class="selectpicker" style="background-color: white;"  data-live-search="true" id="inputUsuario" data-size="5" name="selectUsuario">
                                                                                                                                                                      <% for(int i=0;i<lista.size();i++){ %>
                                                                                                                                                                      <option value="<%= lista.get(i).getUsuarioId() %>"><%= lista.get(i).getCodigo()+" - "+lista.get(i).getNombre()+" "+lista.get(i).getApellido() %></option>
                                                                                                                                                                       <%}%>
