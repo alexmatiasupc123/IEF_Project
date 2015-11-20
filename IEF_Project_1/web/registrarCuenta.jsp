@@ -4,6 +4,7 @@
     Author     : Alex
 --%>
 
+<%@page import="upc.edu.entitys.Usuario"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,13 +31,14 @@
             
               <!-- Bootstrap Datepicker CSS -->
             <link href="assets/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
-        
+            <link href="assets/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
         
          <%@include file="validarSesion.jsp" %>
          
          
          <%
                 String ncuenta=(String)request.getAttribute("ncuenta");
+                List<Usuario> lista=(List)request.getAttribute("listaUsuarios");
          %>
       
          <%!
@@ -121,8 +123,17 @@
 										      <input type="number" class="form-control" name="monto" min="30" max="99999" name="telefono" id="inputMonto" placeholder="Monto de apertura">
 										    </div>
 										  </div>                       
-                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                   
+                                                                                                                                                                            
+                                                                                                                                                                   <div class="form-group">
+										    <label for="inputUsuario" class="col-sm-2 control-label">Seleccione Usuario</label>
+										    <div class="col-sm-4">
+                                                                                        <select class="selectpicker" style="background-color: white;"  data-live-search="true" id="inputUsuario" data-size="5">
+                                                                                                                                                                     <% for(int i=0;i<lista.size();i++){ %>
+                                                                                                                                                                     <option value="<%= lista.get(i).getUsuarioId() %>"><%= lista.get(i).getCodigo()+" - "+lista.get(i).getNombre()+" "+lista.get(i).getApellido() %></option>
+                                                                                                                                                                      <%}%>
+                                                                                                                                                                      </select>
+                                                                                                                                                                     </div>
+										  </div>     
                                                                                                                                                                                                                                                                                                                          
                                                                                                                                                                  
 										  <!-- Boton Registrar -->
@@ -131,10 +142,12 @@
                                                                                                                                                                        <div class="col-sm-10">
                                                                                                                                                                    <button type="submit" class="btn btn-success"><i class="fa fa-credit-card"></i>&nbsp Registrar</button>
                                                                                                                                                                         </div>
-                                                                                                                                                                   </div>
-                                                                                                                                                                     
+                                                                                                                                                                   </div>                                                                                                                                                       
+                                                                                  
                                                                                                                                                                     
 										</form>
+                                                                                                                                                                    
+                                                                                                                                                                    <div class="row">&nbsp;</div><div class="row">&nbsp;</div><div class="row"></div>&nbsp;<div class="row">&nbsp;</div><div class="row">&nbsp;</div><div class="row">&nbsp;</div><div class="row">&nbsp;</div><div class="row">&nbsp;</div>
 									</div>
 								</div>
 							</div>
@@ -201,7 +214,7 @@
 		<script src="assets/js/custom-index.js"></script>
                      <script src="assets/js/moment-with-locales.js" type="text/javascript"></script>
                      <script src="assets/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
-                     
+                     <script src="assets/js/bootstrap-select.min.js" type="text/javascript"></script>
                       <script type="text/javascript">
         
     $(function () {

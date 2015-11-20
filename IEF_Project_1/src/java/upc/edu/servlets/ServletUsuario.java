@@ -276,7 +276,15 @@ public class ServletUsuario extends HttpServlet {
                                       sNum="10000000";
                                   
                                   //ACTUALIZANDO EL NROCUENTA
-                                  nroCuenta=sOfi+sNum+"0"+sCod;                                                     
+                                  nroCuenta=sOfi+sNum+"0"+sCod; 
+                                  
+                                  //PASANDO LA LISTA DE USUARIOS
+                                   Query query2=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado and u.rol='CLI' ", Usuario.class);
+                                    query2.setParameter("estado", "ACT");
+                                    List<Usuario> lista2=query2.getResultList();   
+                                   
+
+                                    request.setAttribute("listaUsuarios",lista2);
 
                                    em.close();
 
