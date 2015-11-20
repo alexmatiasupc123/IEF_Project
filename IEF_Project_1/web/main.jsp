@@ -3,6 +3,7 @@
     Created on : 18/09/2015, 05:48:43 PM
     Author     : Alex
 --%>
+
 <% String nombreCompleto=(String)session.getAttribute("nombre"); %>
                                         
 <%@page import="java.util.List"%>

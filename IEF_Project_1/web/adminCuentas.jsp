@@ -4,6 +4,7 @@
     Author     : Alex
 --%>
 
+<%@page import="upc.edu.entitys.Cuenta"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,6 +17,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
             <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen">
+            <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+            <link href="assets/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>           
+             <link href="assets/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+           
+            
             <!-- Animate CSS -->
             <link href="assets/css/animate.css" rel="stylesheet" media="screen">
             <!-- Alertify CSS -->
@@ -30,7 +36,19 @@
         
         
          <%@include file="validarSesion.jsp" %>
-      
+         
+         <%
+                    List<Cuenta> lista=(List)request.getAttribute("listaCuentas");
+                    String mensajeConfirmacion=(String)request.getAttribute("mensajeConfirmacion");                                      
+         %>      
+         
+         <%!
+                    public String textoNumCuenta(String nro)
+                    {
+                        return nro.substring(0,3)+"-"+nro.substring(3,11)+"-0-"+nro.substring(12,14);
+                    }
+                    
+              %>
        
     </head>   
     <body>
@@ -74,12 +92,72 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-					
-                                                                    <div class="row">
+                                    
+                                                                                <!-- Spacer starts -->
+					<div class="spacer">
+						
+                                                            <div class="row">   
+                                                                                                            <%if(mensajeConfirmacion!=null){ %>
+                                                                                                                <div class="alert alert-success">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+												<strong>Bien Hecho!</strong> <%= mensajeConfirmacion %>.
+							</div>
+                                                                                                                <% }%>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="blog">
+									<div class="blog-header">
+										<h5 class="blog-title"><i class="fa fa-credit-card"></i>&nbsp Administre las cuentas</h5>
+									</div>
+									<div class="blog-body">
+										<div class="table-responsive">
+											<div  class="table-responsive example_alt_pagination clearfix">
+												<table id="data-table" class="table table-condensed table-striped table-hover table-bordered pull-left dt-responsive nowrap dtr-inline collapsed" width="100%">    
+													<thead>
+														<tr>
+															<th style="width:3%">
+                                                                                                                                                                                                                                                        &nbsp;
+															</th>
+															<th style="width:12%">N° de Cuenta</th>
+															<th style="width:10%">Código de Usuario</th>
+                                                                                                                                                                                                                                                <th style="width:15%">DNI</th>
+															<th style="width:32%">Nombre y Apellido</th>
+															<th style="width:15%">Opciones</th>
+															
+														</tr>
+													</thead>
+													<tbody>
+                                                                                                                                                                                                                            <%if(lista!=null){ for(int i=0;i<lista.size();i++){ %>
+                                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                        <td class="center-align-text" ><%= i+1 %> </td>
+                                                                                                                                                                                                        <td><%= textoNumCuenta(lista.get(i).getNroCuenta())%> </td>
+                                                                                                                                                                                                        <td><%= lista.get(i).getUsuarioId().getCodigo() %> </td>
+                                                                                                                                                                                                        <td><%= lista.get(i).getUsuarioId().getDni() %> </td>
+                                                                                                                                                                                                        <td><%= lista.get(i).getUsuarioId().getNombre()+" "+lista.get(i).getUsuarioId().getApellido() %> </td>
+                                                                                                                                                                                                        <td class="center-align-text"><a class="btn btn-danger" href="ServletUsuario?crud=disable&accion=adminc&id=<%=lista.get(i).getCuentaId()%>"><i class="fa fa-trash-o"></i>&nbsp Inhabilitar</a> </td>
+                                                                                                                                                                                                                        </tr>
+                                                                                                       
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                               <% } } %>
+														
+													</tbody>
+                                                                                                                                                                                                        <div class="row">
+                                                                                                                                                                                                            &nbsp;
+                                                                                                                                                                                                        </div>
+												</table>
+                                                                                                                                                                                                   <a class="btn btn-success" href="ServletUsuario?crud=insert&accion=adminc"><i class="fa fa-credit-card"></i>&nbsp Registrar Nueva Cuenta</a>
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row Ends -->
 
-                                                                                                &nbsp
-                                                                                    </div>
-
+                                                                        
+                                        </div>
+                                                    <!-- Spacer starts -->
 				</div>
 				<!-- Container fluid ends -->
                                 
@@ -90,44 +168,36 @@
                                                 <%@include file="footer.jsp" %>
 			
                 </div>
-		<!-- Dashboard Wrapper ends -->
-
-                
-                
+		                
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="assets/js/jquery.js"></script>
-
-		<!-- jQuery UI JS -->
-		<script src="assets/js/jquery-ui-v1.10.3.js"></script>
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- Sparkline graphs -->
-		<script src="assets/js/sparkline.js"></script>
-
-		<!-- jquery ScrollUp JS -->
+		<script src="assets/js/sparkline.js"></script>                
+                                
+		<!-- Data tables -->
+		 <script src="assets/js/jquery.dataTables.js" type="text/javascript"></script>
+                                
+                                <!-- jquery ScrollUp JS -->
 		<script src="assets/js/scrollup/jquery.scrollUp.js"></script>
-
-		<!-- Notifications JS -->
-		<script src="assets/js/alertify/alertify.js"></script>
-		<script src="assets/js/alertify/alertify-custom.js"></script>
-
-		<!-- Flot Charts -->
-		<script src="assets/js/flot/jquery.flot.js"></script>
-		<script src="assets/js/flot/jquery.flot.tooltip.min.js"></script>
-		<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
-		<script src="assets/js/flot/jquery.flot.stack.min.js"></script>
-		<script src="assets/js/flot/jquery.flot.orderBar.min.js"></script>
-		<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
-
-		<!-- JVector Map -->
-		<script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-		<script src="assets/js/jvectormap/jquery-jvectormap-usa.js"></script>
-
+		
 		<!-- Custom Index -->
 		<script src="assets/js/custom.js"></script>
-		<script src="assets/js/custom-index.js"></script>
+		<script src="assets/js/custom-datatables.js"></script>
+                
+                <script src="assets/js/dataTables.bootstrap.js" type="text/javascript"></script>
+                <script src="assets/js/dataTables.responsive.min.js" type="text/javascript"></script>
+                 
+                
+               
+                
+                	
+
+
+		
         
         
                 

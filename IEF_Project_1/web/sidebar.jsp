@@ -3,6 +3,7 @@
                                 <% 
                                         String nombre=(String)session.getAttribute("nombre");
                                         String rol=(String)session.getAttribute("rol");
+                                        String imagen_url=(String)session.getAttribute("imagen_url");
                                         
                                         String accion="principal";
                                         String recibir=(String)request.getAttribute("accion");
@@ -11,15 +12,24 @@
                                             accion=recibir;
                                     %>
                                     
+                                    <%@include file="validarSesion.jsp" %>
+                                    
 		<aside id="sidebar">
 
 			<!-- Current User Starts - DATOS DEL USUARIO LOGUEADO-->
 			<div class="current-user">
 				<div class="user-avatar animated rubberBand">
-					<img src="assets/img/user4.jpg" alt="Current User">
+					<img src="<%= imagen_url  %>" alt="Current User">
 					<span class="busy"></span>
 				</div>
-				<div class="user-name">Hola Sr. <%= nombre %> :)</div>
+				<div class="user-name">Hola <%= nombre %> :)</div>
+                                                                <div class="user-name">
+                                                                    <%if(rol!=null){ if(rol.equals("CLI")){ %>
+                                                                    <b><%= "Cliente" %></b>
+                                                                            <%}else{ %>
+                                                                            <b><%= "Administrador" %></b>
+                                                                            <%} } %>
+                                                                    </div>
 				<ul class="user-links">
 					<li>
 						<a href="profile.html">
@@ -84,7 +94,7 @@
                                                                       <%}else{ %>
                                                                 
 					<li     <% if(accion.equals("adminu")){ %> class="highlight"  <%}%> >
-						<a href="ServletUsuario?accion=adminu">
+						<a href="ServletUsuario?accion=adminu&crud=read">
 							<i class="fa fa-users"></i> 
 							<span>Admin. Usuarios</span>
                                                                                                                 <% if(accion.equals("adminu")){ %>
@@ -93,7 +103,7 @@
 						</a>
 					</li>
 					<li     <% if(accion.equals("adminc")){ %> class="highlight"  <%}%> >
-						<a href="ServletUsuario?accion=adminc">
+						<a href="ServletUsuario?accion=adminc&crud=read">
 							<i class="fa fa-credit-card"></i> 
 							<span>Admin. Cuentas</span>
                                                                                                                 <% if(accion.equals("adminc")){ %>

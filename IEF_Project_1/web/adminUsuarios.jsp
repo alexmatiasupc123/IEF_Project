@@ -39,8 +39,8 @@
          
          <%
                     List<Usuario> lista=(List)request.getAttribute("listaUsuarios");
-         %>
-      
+                    String mensajeConfirmacion=(String)request.getAttribute("mensajeConfirmacion");
+         %>      
        
     </head>   
     <body>
@@ -88,11 +88,17 @@
                                                                                 <!-- Spacer starts -->
 					<div class="spacer">
 						
-                                                            <div class="row">
+                                                            <div class="row">   
+                                                                                                            <%if(mensajeConfirmacion!=null){ %>
+                                                                                                                <div class="alert alert-success">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+												<strong>Bien Hecho!</strong> <%= mensajeConfirmacion %>.
+							</div>
+                                                                                                                <% }%>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
-										<h5 class="blog-title">Administre a usuarios</h5>
+										<h5 class="blog-title"><i class="fa fa-users"></i>&nbsp Administre a usuarios</h5>
 									</div>
 									<div class="blog-body">
 										<div class="table-responsive">
@@ -111,24 +117,24 @@
 														</tr>
 													</thead>
 													<tbody>
-                                                                                                                                                                                                                            <% for(int i=0;i<lista.size();i++){ %>
+                                                                                                                                                                                                                            <%if(lista!=null){ for(int i=0;i<lista.size();i++){ %>
                                                                                                                                                                                                                             <tr>
                                                                                                                                                                                                         <td class="center-align-text" ><%= i+1 %> </td>
                                                                                                                                                                                                         <td><%= lista.get(i).getCodigo() %> </td>
                                                                                                                                                                                                         <td><%= lista.get(i).getDni() %> </td>
                                                                                                                                                                                                         <td><%= lista.get(i).getNombre()+" "+lista.get(i).getApellido() %> </td>
-                                                                                                                                                                                                        <td class="center-align-text"> <a class="btn btn-success" href="ServletUsuario?accion=update&id=<%=lista.get(i).getUsuarioId()%>"><i class="fa fa-pencil-square-o"></i>&nbsp Modificar</a>&nbsp;&nbsp;<a class="btn btn-danger" href="ServletUsuario?accion=disable&id=<%=lista.get(i).getUsuarioId()%>"><i class="fa fa-trash-o"></i>&nbsp Inhabilitar</a> </td>
+                                                                                                                                                                                                        <td class="center-align-text"> <a class="btn btn-success" href="ServletUsuario?crud=update&accion=adminu&id=<%=lista.get(i).getUsuarioId()%>"><i class="fa fa-pencil-square-o"></i>&nbsp Actualizar</a>&nbsp;&nbsp;<a class="btn btn-danger" href="ServletUsuario?crud=disable&accion=adminu&id=<%=lista.get(i).getUsuarioId()%>"><i class="fa fa-trash-o"></i>&nbsp Inhabilitar</a> </td>
                                                                                                                                                                                                                         </tr>
                                                                                                        
                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                               <% } %>
+                                                                                                                                                                                                                               <% } } %>
 														
 													</tbody>
                                                                                                                                                                                                         <div class="row">
                                                                                                                                                                                                             &nbsp;
                                                                                                                                                                                                         </div>
 												</table>
-                                                                                                                                                                                                   <a class="btn btn-success" href="ServletUsuario?accion=insert"><i class="fa fa-user"></i>&nbsp Registrar Nuevo Usuario</a>
+                                                                                                                                                                                                   <a class="btn btn-success" href="ServletUsuario?crud=insert&accion=adminu"><i class="fa fa-user-plus"></i>&nbsp Registrar Nuevo Usuario</a>
                                                                                                                                                                                                         
                                                                                                                                                                                                         
 											</div>

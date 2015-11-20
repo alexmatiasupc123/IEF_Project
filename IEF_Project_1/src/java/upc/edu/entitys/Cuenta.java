@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cuenta.findAll", query = "SELECT c FROM Cuenta c"),
     @NamedQuery(name = "Cuenta.findByCuentaId", query = "SELECT c FROM Cuenta c WHERE c.cuentaId = :cuentaId"),
     @NamedQuery(name = "Cuenta.findByNroCuenta", query = "SELECT c FROM Cuenta c WHERE c.nroCuenta = :nroCuenta"),
-    @NamedQuery(name = "Cuenta.findByMontoNeto", query = "SELECT c FROM Cuenta c WHERE c.montoNeto = :montoNeto")})
+    @NamedQuery(name = "Cuenta.findByMontoNeto", query = "SELECT c FROM Cuenta c WHERE c.montoNeto = :montoNeto"),
+    @NamedQuery(name = "Cuenta.findByEstado", query = "SELECT c FROM Cuenta c WHERE c.estado = :estado")})
 public class Cuenta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,6 +51,8 @@ public class Cuenta implements Serializable {
     @Basic(optional = false)
     @Column(name = "monto_neto")
     private BigDecimal montoNeto;
+    @Column(name = "estado")
+    private String estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaId")
     private Collection<Transaccion> transaccionCollection;
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
@@ -93,6 +96,14 @@ public class Cuenta implements Serializable {
 
     public void setMontoNeto(BigDecimal montoNeto) {
         this.montoNeto = montoNeto;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

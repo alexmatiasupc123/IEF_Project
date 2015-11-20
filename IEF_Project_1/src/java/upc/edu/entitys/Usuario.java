@@ -43,7 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
-    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
+    @NamedQuery(name = "Usuario.findByImagenUrl", query = "SELECT u FROM Usuario u WHERE u.imagenUrl = :imagenUrl")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -82,6 +83,9 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
+    @Basic(optional = false)
+    @Column(name = "imagen_url")
+    private String imagenUrl;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Collection<Cuenta> cuentaCollection;
 
@@ -92,7 +96,7 @@ public class Usuario implements Serializable {
         this.usuarioId = usuarioId;
     }
 
-    public Usuario(Integer usuarioId, String codigo, String clave, String nombre, String apellido, String dni, String rol, String estado, Date fechaNacimiento, String telefono, String email) {
+    public Usuario(Integer usuarioId, String codigo, String clave, String nombre, String apellido, String dni, String rol, String estado, Date fechaNacimiento, String telefono, String email, String imagenUrl) {
         this.usuarioId = usuarioId;
         this.codigo = codigo;
         this.clave = clave;
@@ -104,6 +108,7 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.email = email;
+        this.imagenUrl = imagenUrl;
     }
 
     public Integer getUsuarioId() {
@@ -192,6 +197,14 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
     @XmlTransient
