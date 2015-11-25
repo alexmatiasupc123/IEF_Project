@@ -68,18 +68,14 @@
 				</div>
 				<ul class="stats hidden-xs">
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="downloads_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_income">580</span> <i class="fa fa-chevron-up up"></i></h4>
 							<h5>Today's Income</h5>
 						</div>
 					</li>
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="users_online_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_expenses">235</span> <i class="fa fa-chevron-down down"></i></h4>
 							<h5>Today's Expenses</h5>
@@ -111,14 +107,14 @@
                                                                                                                                                                     <div class="form-group">
 										    <label for="inputNombre" class="col-sm-2 control-label">Nombres del Cliente</label>
 										    <div class="col-sm-4">
-										      <input type="text" class="form-control" name="nombres" id="inputNombre" placeholder="Nombres" value="<%= user.getNombre() %>">
+										      <input type="text" class="form-control" name="nombres" id="inputNombre" placeholder="Nombres" value="<%= user.getNombre() %>" required >
 										    </div>
 										  </div>
                                                                                                                                                                    <!-- Apellidos del Cliente -->
                                                                                                                                                                     <div class="form-group">
 										    <label for="inputApellido" class="col-sm-2 control-label">Apellidos del Cliente</label>
 										    <div class="col-sm-4">
-										      <input type="text" class="form-control" name="apellidos" id="inputApellido" placeholder="Apellidos" value="<%= user.getApellido() %>">
+										      <input type="text" class="form-control" name="apellidos" id="inputApellido" placeholder="Apellidos" value="<%= user.getApellido() %>" required >
 										    </div>
 										  </div>
                                                                                                                                                                    <!-- FechaNacimiento del Cliente -->
@@ -126,7 +122,7 @@
                                                                                                                                                                     <label  for="inputFecha" class="col-sm-2 control-label">Fecha de nacimiento</label>
                                                                                                                                                                     <div class="col-sm-4">
                                                                                                                                                                         <div class='input-group date' id='datetimepicker4'>
-                                                                                                                                                                            <input id="inputFecha" type="text" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" value="<%= fechanacimiento %>" />
+                                                                                                                                                                            <input id="inputFecha" type="text" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" value="<%= fechanacimiento %>" required />
                                                                                                                                                                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                                                                                                                                                                             </span>
                                                                                                                                                                         </div>
@@ -137,7 +133,7 @@
                                                                                                                                                                 <div class="form-group">
 										    <label for="dni" class="col-sm-2 control-label">DNI del Cliente</label>
 										    <div class="col-sm-4">
-										      <input type="number" value="<%= user.getDni() %>" class="form-control" min="10000000" max="99999999" name="dni" id="dniCheck" placeholder="DNI" onkeypress="ValidaSoloNumeros()">
+										      <input type="number" value="<%= user.getDni() %>" class="form-control" min="10000000" max="99999999" name="dni" id="dniCheck" placeholder="DNI" onkeypress="ValidaSoloNumeros()" required >
 										    </div>
 										  </div>
                                                                                                                                                                    
@@ -146,14 +142,14 @@
                                                                                                                                                                    <div class="form-group">
 										    <label for="telCheck" class="col-sm-2 control-label">Teléfono</label>
 										    <div class="col-sm-4">
-										      <input type="number" value="<%= user.getTelefono() %>" class="form-control" min="1000000" max="999999999" name="telefono" id="telCheck" placeholder="Teléfono" onkeypress="ValidaSoloNumeros()">
+										      <input type="number" value="<%= user.getTelefono() %>" class="form-control" min="1000000" max="999999999" name="telefono" id="telCheck" placeholder="Teléfono" onkeypress="ValidaSoloNumeros()" required >
 										    </div>
 										  </div>
                                                                                                                                                                   <!-- Correo del Cliente -->
                                                                                                                                                                   <div class="form-group">
 										    <label for="inputEmail" class="col-sm-2 control-label">Correo</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                     <input type="email" value="<%= user.getEmail()%>" class="form-control" name="email" id="inputEmail" placeholder="Correo">
+                                                                                                                                                                     <input type="email" value="<%= user.getEmail()%>" class="form-control" name="email" id="inputEmail" placeholder="Correo"  required >
 										    </div>
 										  </div>
                                                                                                                                                                   
@@ -172,7 +168,7 @@
                                                                                                                                                                 <div class="form-group">
 										    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
 										    <div class="col-sm-4">
-										      <input type="text" class="form-control" value="<%= user.getClave() %>" name="clave" id="inputPassword" placeholder="Contraseña">
+										      <input type="text" class="form-control" value="<%= user.getClave() %>" name="clave" id="inputPassword" placeholder="Contraseña" required >
 										    </div>
 										  </div>                                                                                                                                                      
                                                                                                                                                                    

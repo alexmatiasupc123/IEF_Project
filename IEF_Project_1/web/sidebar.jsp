@@ -72,7 +72,7 @@
 						</a>
 					</li>
 					<li     <% if(accion.equals("ingresar")){ %> class="highlight"  <%}%> >
-						<a href="ServletUsuario?accion=ingresar">
+                                                                                    <a href="ServletUsuario?accion=ingresar">
 							<i class="fa fa-plus-square"></i> 
 							<span>Ingresar Monto</span>
                                                         

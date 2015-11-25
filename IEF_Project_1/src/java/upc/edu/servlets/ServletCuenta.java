@@ -39,7 +39,8 @@ public class ServletCuenta extends HttpServlet {
             throws ServletException, IOException {
         //DO POST (FORM)
          String accion=(String)request.getParameter("accion");
-        if(accion!=null) //ha entrado por post significa que ha entrado por formulario por lo tanto o es un insert o es un update :D
+         // <editor-fold defaultstate="collapsed" desc="Administracion de Cuentas">
+         if(accion!=null) //ha entrado por post significa que ha entrado por formulario por lo tanto o es un insert o es un update :D
         {
             //OJO ACA ... 192-12345678-0-30
             String ncuenta=(String)request.getParameter("ncuenta");
@@ -97,7 +98,15 @@ public class ServletCuenta extends HttpServlet {
                      request.getRequestDispatcher("adminCuentas.jsp").forward(request, response);
                      return;
         }
+         //</editor-fold>
         
+         String operacionCuenta=(String)request.getParameter("operacionCuenta");
+         if(operacionCuenta!=null)
+         {
+             //O BIEN ES INGRESAR O BIEN ES RETIRAR
+             
+             
+         }
         
     }    
     @Override

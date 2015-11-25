@@ -66,18 +66,14 @@
 				</div>
 				<ul class="stats hidden-xs">
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="downloads_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_income">580</span> <i class="fa fa-chevron-up up"></i></h4>
 							<h5>Today's Income</h5>
 						</div>
 					</li>
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="users_online_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_expenses">235</span> <i class="fa fa-chevron-down down"></i></h4>
 							<h5>Today's Expenses</h5>
@@ -120,14 +116,14 @@
                                                                                                                                                                    <div class="form-group">
 										    <label for="inputMonto" class="col-sm-2 control-label">Monto de Apertura</label>
 										    <div class="col-sm-4">
-										      <input type="number" class="form-control" name="monto" min="30" max="99999" name="telefono" id="inputMonto" placeholder="Monto de apertura">
+										      <input type="number" class="form-control" name="monto" min="30" max="99999" name="telefono" id="inputMonto" placeholder="Monto de apertura" required>
 										    </div>
 										  </div>                       
                                                                                                                                                                             
                                                                                                                                                                    <div class="form-group">
 										    <label for="inputUsuario" class="col-sm-2 control-label">Seleccione Usuario</label>
 										    <div class="col-sm-4">
-                                                                                        <select class="selectpicker" style="background-color: white;"  data-live-search="true" id="inputUsuario" data-size="5" name="selectUsuario">
+                                                                                        <select class="selectpicker" style="background-color: white;"  data-live-search="true" id="inputUsuario" data-size="5" name="selectUsuario" required>
                                                                                                                                                                      <% for(int i=0;i<lista.size();i++){ %>
                                                                                                                                                                      <option value="<%= lista.get(i).getUsuarioId() %>"><%= lista.get(i).getCodigo()+" - "+lista.get(i).getNombre()+" "+lista.get(i).getApellido() %></option>
                                                                                                                                                                       <%}%>

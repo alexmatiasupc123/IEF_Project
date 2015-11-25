@@ -4,6 +4,7 @@
     Author     : Alex
 --%>
 
+<%@page import="upc.edu.entitys.Cuenta"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,7 +29,18 @@
             <!-- Font Awesome -->
             <link href="assets/fonts/font-awesome.min.css" rel="stylesheet">
         
-        
+            <%
+                        List<Cuenta> lista=(List)request.getAttribute("listaCuentas");
+                %>
+                
+                 <%!
+                    public String textoNumCuenta(String nro)
+                    {
+                        return nro.substring(0,3)+"-"+nro.substring(3,11)+"-0-"+nro.substring(12,14);
+                    }
+                    
+              %>
+                
          <%@include file="validarSesion.jsp" %>
       
        
@@ -49,18 +61,14 @@
 				</div>
 				<ul class="stats hidden-xs">
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="downloads_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_income">580</span> <i class="fa fa-chevron-up up"></i></h4>
 							<h5>Today's Income</h5>
 						</div>
 					</li>
 					<li>
-						<div class="stats-block hidden-sm hidden-xs">
-							<span id="users_online_graph"></span>
-						</div>
+						
 						<div class="stats-details">
 							<h4>$<span id="today_expenses">235</span> <i class="fa fa-chevron-down down"></i></h4>
 							<h5>Today's Expenses</h5>
@@ -83,31 +91,32 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
-										<h5 class="blog-title">Ingrese el monto a depositar</h5>
+										<h5 class="blog-title"><i class="fa fa-plus-square"></i>&nbsp Ingrese el monto a depositar</h5>
 									</div>
 									<div class="blog-body">
-										<form class="form-horizontal" role="form">
+										<form class="form-horizontal" role="form" method="post" action="ServletCuenta">
 										  <div class="form-group">
 										    <label for="inputDeposito" class="col-sm-2 control-label">Monto de depósito</label>
 										    <div class="col-sm-4">
-										      <input type="number" min="0" step="0.5" class="form-control" id="inputDeposito" placeholder="S/.">
+										      <input type="number" min="0" step="0.5" class="form-control" id="inputDeposito" name="montoS" placeholder="S/.">
 										    </div>
 										  </div>
                                                                                                                                                                    <div class="form-group">
                                                                                                                                                                        <label  for="inputCuenta" class="col-sm-2 control-label">Nro de Cuenta</label>
                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                       <select class="form-control" id="inputCuenta">
-												<option value="" disabled selected>Seleccione una cuenta</option>
-												<option>1</option>
-												<option>2</option>
-											</select>
-                                                                                                                                                                               </div>
+                                                                                                                                                                            <select class="form-control" id="inputCuenta" name="cuentaid">
+											<option value="" disabled selected>Seleccione una cuenta</option>
+											<% for(int i=0;i<lista.size();i++){%>
+                                                                                                                                                                                <option value="<%= lista.get(i).getCuentaId()%>"><%= textoNumCuenta(lista.get(i).getNroCuenta()) %></option>
+                                                                                                                                                                                <% } %>
+                                                                                                                                                                            </select>
+                                                                                                                                                                          </div>
 										</div>
                                                                                     
 										  <div class="form-group">
 										    <label for="inputMotivo" class="col-sm-2 control-label">Motivo</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                    <textarea class="form-control" rows="5" id="inputMotivo" placeholder="Detalle o descripción "></textarea>
+                                                                                                                                                                    <textarea class="form-control" rows="5" name="motivo" id="inputMotivo" placeholder="Detalle o descripción "></textarea>
                                                                                                                                                                     
 										    </div>
 										  </div>

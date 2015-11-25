@@ -17,6 +17,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.Id;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +63,33 @@ public class ServletUsuario extends HttpServlet {
             else if(accion.equals("estado"))
                 request.getRequestDispatcher("estadoCuenta.jsp").forward(request, response);
             else if(accion.equals("ingresar"))
+            {
+                  try{
+                                 EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
+                                 EntityManager em=emf.createEntityManager();
+
+                                  //int id=Integer.parseInt((String)request.getParameter("usuarioid"));
+                                 int id=Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                 Usuario user=em.find(Usuario.class,id);
+                                 
+                                 //NOTAR QUE PARA ASOCIACIONES Y RELACIONES POR ID SE MANDA EL OBJETO e_e
+                                 Query query=em.createQuery("SELECT c FROM Cuenta c where c.usuarioId = :user", Cuenta.class);
+                                 query.setParameter("user", user);
+                                                                 
+                                 List<Cuenta> lista=query.getResultList();   
+                                 em.close();
+
+                                 request.setAttribute("listaCuentas",lista);
+
+                         }catch(Exception ex)
+                         {
+                             System.out.println("Error de conexión en el Ingresar Mto READ GET");
+                             ex.printStackTrace();
+                             System.out.println(ex.getMessage());
+                         }
+                
                 request.getRequestDispatcher("ingresarMonto.jsp").forward(request, response);
+            }
             else if(accion.equals("retirar"))
                 request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);
             // <editor-fold defaultstate="collapsed" desc="Administracion de Usuarios">

@@ -3,9 +3,9 @@
   <persistence-unit name="IEF_Project_1PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>upc.edu.entitys.CostoXCuenta</class>
+    <class>upc.edu.entitys.Cuenta</class>
     <class>upc.edu.entitys.Usuario</class>
     <class>upc.edu.entitys.Transaccion</class>
-    <class>upc.edu.entitys.Cuenta</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ahorromax?zeroDateTimeBehavior=convertToNull"/>
