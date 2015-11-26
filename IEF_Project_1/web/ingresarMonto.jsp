@@ -31,6 +31,7 @@
         
             <%
                         List<Cuenta> lista=(List)request.getAttribute("listaCuentas");
+                         String mensajeConfirmacion=(String)request.getAttribute("mensajeConfirmacion");                    
                 %>
                 
                  <%!
@@ -88,6 +89,13 @@
 						
 						<!-- Row Starts -->
 						<div class="row">
+                                                    
+                                                                                                            <%if(mensajeConfirmacion!=null){ %>
+                                                                                                                <div class="alert alert-success">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+												<strong>Bien Hecho!</strong> <%= mensajeConfirmacion %>.
+							</div>
+                                                                                                                <% }%>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
@@ -98,13 +106,14 @@
 										  <div class="form-group">
 										    <label for="inputDeposito" class="col-sm-2 control-label">Monto de depósito</label>
 										    <div class="col-sm-4">
-										      <input type="number" min="0" step="0.5" class="form-control" id="inputDeposito" name="montoS" placeholder="S/.">
+										      <input type="number" min="30" step="0.5" class="form-control" id="inputDeposito" name="monto" placeholder="S/." required>
+                                                                                                                                                                        <input type="hidden" value="ingresar" name="operacionCuenta"/>
 										    </div>
 										  </div>
                                                                                                                                                                    <div class="form-group">
                                                                                                                                                                        <label  for="inputCuenta" class="col-sm-2 control-label">Nro de Cuenta</label>
                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                            <select class="form-control" id="inputCuenta" name="cuentaid">
+                                                                                                                                                                            <select class="form-control" id="inputCuenta" name="cuentaid" required>
 											<option value="" disabled selected>Seleccione una cuenta</option>
 											<% for(int i=0;i<lista.size();i++){%>
                                                                                                                                                                                 <option value="<%= lista.get(i).getCuentaId()%>"><%= textoNumCuenta(lista.get(i).getNroCuenta()) %></option>
@@ -116,7 +125,7 @@
 										  <div class="form-group">
 										    <label for="inputMotivo" class="col-sm-2 control-label">Motivo</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                    <textarea class="form-control" rows="5" name="motivo" id="inputMotivo" placeholder="Detalle o descripción "></textarea>
+                                                                                                                                                                    <textarea class="form-control" rows="5" name="motivo" id="inputMotivo" placeholder="Detalle o descripción " required></textarea>
                                                                                                                                                                     
 										    </div>
 										  </div>

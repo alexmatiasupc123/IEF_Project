@@ -90,7 +90,7 @@
 										<h5 class="blog-title"><i class="fa fa-user-plus"></i>&nbsp Registrar Usuario </h5>
 									</div>
 									<div class="blog-body">
-										<form class="form-horizontal" role="form" method="post" action="ServletUsuario">
+                                                                            <form class="form-horizontal" role="form" method="post" action="ServletUsuario" onsubmit="return validarFechaMenorActual(document.getElementById('inputFecha').value);">
 										  
                                                                                                                                                                      <!-- Nombres del Cliente -->
                                                                                                                                                                     <div class="form-group">
@@ -106,26 +106,14 @@
 										      <input type="text" class="form-control" name="apellidos" id="inputApellido" placeholder="Apellidos" required>
 										    </div>
 										  </div>
-                                                                                                                                                                   <!-- FechaNacimiento del Cliente -->
-                                                                                                                                                                <div class="form-group">
-                                                                                                                                                                    <label  for="inputFecha" class="col-sm-2 control-label">Fecha de nacimiento</label>
-                                                                                                                                                                    <div class="col-sm-4">
-                                                                                                                                                                        <div class='input-group date' id='datetimepicker4'>
-                                                                                                                                                                            <input id="inputFecha" type="text" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" required/>
-                                                                                                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                                                                                                                                                            </span>
-                                                                                                                                                                        </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                    
                                                                                                                                                                    <!-- DNI del Cliente -->
                                                                                                                                                                 <div class="form-group">
 										    <label for="dni" class="col-sm-2 control-label">DNI del Cliente</label>
 										    <div class="col-sm-4">
 										      <input type="number" class="form-control" min="10000000" max="99999999" name="dni" id="dniCheck" placeholder="DNI" onkeypress="ValidaSoloNumeros()" required>
 										    </div>
-										  </div>
-                                                                                                                                                                   
+										  </div>                                                                                                                                                                   
                                                                                                                                                                                                                                                                                                                                       
                                                                                                                                                                     <!-- Télefono del Cliente -->                                                                                    
                                                                                                                                                                    <div class="form-group">
@@ -133,7 +121,8 @@
 										    <div class="col-sm-4">
 										      <input type="number" class="form-control" min="1000000" max="999999999" name="telefono" id="telCheck" placeholder="Teléfono" onkeypress="ValidaSoloNumeros()" required>
 										    </div>
-										  </div>
+										  </div>                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                          
                                                                                                                                                                   <!-- Correo del Cliente -->
                                                                                                                                                                   <div class="form-group">
 										    <label for="inputEmail" class="col-sm-2 control-label">Correo</label>
@@ -141,6 +130,18 @@
                                                                                                                                                                      <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Correo" required>
 										    </div>
 										  </div>
+                                                                                                                                                                  
+                                                                                                                                                                    <!-- FechaNacimiento del Cliente -->
+                                                                                                                                                                <div class="form-group">
+                                                                                                                                                                    <label  for="inputFecha" class="col-sm-2 control-label">Fecha de nacimiento</label>
+                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                        <div class='input-group date' id='datetimepicker4'>
+                                                                                                                                                                            <input id="inputFecha" type="text" value="" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" onload="vaciar()" required/>
+                                                                                                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                                                                            </span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                </div>
                                                                                                                                                                   
                                                                                                                                                                   <!-- Monto de Apertura -->                                                                                    
                                                                                                                                                                    <div class="form-group">
@@ -179,6 +180,10 @@
                                                                                                                                                                         </div>
                                                                                                                                                                    </div>
                                                                                                                                                                      
+                                                                                                                                                                    <div class="row">&nbsp;</div>
+                                                                                                                                                                    <div class="row">&nbsp;</div>
+                                                                                                                                                                     <div class="row">&nbsp;</div>
+                                                                                                                                                                    <div class="row">&nbsp;</div>
                                                                                                                                                                     
 										</form>
 									</div>
@@ -203,6 +208,8 @@
 		<!-- Dashboard Wrapper ends -->
                 
                 <script type="text/javascript">
+                    
+                    
                     
   function ValidaSoloNumeros() {
  if ((event.keyCode < 48) || (event.keyCode > 57)) 
@@ -234,6 +241,16 @@
 		<script src="assets/js/flot/jquery.flot.js"></script>
 		<script src="assets/js/flot/jquery.flot.tooltip.min.js"></script>
 		<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
+                
+                
+                <script type="text/javascript">                      
+                    
+  function ValidaSoloNumeros() {
+ if ((event.keyCode < 48) || (event.keyCode > 57)) 
+  event.returnValue = false;
+}
+                    
+                </script>
 		<script src="assets/js/flot/jquery.flot.stack.min.js"></script>
 		<script src="assets/js/flot/jquery.flot.orderBar.min.js"></script>
 		<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
@@ -247,20 +264,48 @@
 		<script src="assets/js/custom-index.js"></script>
                      <script src="assets/js/moment-with-locales.js" type="text/javascript"></script>
                      <script src="assets/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                                        
                      
                       <script type="text/javascript">
-        
+                          
+                                  
     $(function () {
 							
                 $('#datetimepicker4').datetimepicker(
-				{
-					format: 'DD/MM/YYYY',					
-					locale: 'es'
-				});				
-            });                    
+                {
+                        format: 'DD/MM/YYYY',					
+                        locale: 'es'    
+                         
+
+                }).val('');       
+                
+                              
                     
-                    
+                
+            });       
         </script>
+        <script type="text/javascript">
+            
+            function validarFechaMenorActual(date){
+      var x=new Date();
+      var fecha = date.split("/"); //lo convierte a string[]
+      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+      var today = new Date();
+      today.setFullYear(1997,12,31);
+      if (x >= today)
+      {
+          alert('Solo se permiten usuarios con el mínimo de 18 años de edad ');
+            return false;  
+        }
+      else
+      {
+            return true;
+        }
+       
+}
+            
+        </script>
+        
                 
         
     </body>

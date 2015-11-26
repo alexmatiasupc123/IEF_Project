@@ -86,7 +86,7 @@
 									</div>
 									<input type="submit" value="Entrar" class="btn btn-danger btn-lg btn-block">
 								</form>
-								<a href="#forgot-pwd" class="underline text-info">Se te olvidó tu contraseña?</a>								
+																
 							</div>								
 
 						</div>

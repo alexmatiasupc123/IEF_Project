@@ -36,7 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Transaccion.findByCostoBanco", query = "SELECT t FROM Transaccion t WHERE t.costoBanco = :costoBanco"),
     @NamedQuery(name = "Transaccion.findByMonto", query = "SELECT t FROM Transaccion t WHERE t.monto = :monto"),
     @NamedQuery(name = "Transaccion.findByFechaTransaccion", query = "SELECT t FROM Transaccion t WHERE t.fechaTransaccion = :fechaTransaccion"),
-    @NamedQuery(name = "Transaccion.findByMotivo", query = "SELECT t FROM Transaccion t WHERE t.motivo = :motivo")})
+    @NamedQuery(name = "Transaccion.findByMotivo", query = "SELECT t FROM Transaccion t WHERE t.motivo = :motivo"),
+    @NamedQuery(name = "Transaccion.findBySaldoRestante", query = "SELECT t FROM Transaccion t WHERE t.saldoRestante = :saldoRestante"),
+    @NamedQuery(name = "Transaccion.findByActualizado", query = "SELECT t FROM Transaccion t WHERE t.actualizado = :actualizado")})
 public class Transaccion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,6 +60,12 @@ public class Transaccion implements Serializable {
     @Basic(optional = false)
     @Column(name = "motivo")
     private String motivo;
+    @Basic(optional = false)
+    @Column(name = "saldo_restante")
+    private double saldoRestante;
+    @Basic(optional = false)
+    @Column(name = "actualizado")
+    private int actualizado;
     @JoinColumn(name = "cuenta_id", referencedColumnName = "cuenta_id")
     @ManyToOne(optional = false)
     private Cuenta cuentaId;
@@ -69,12 +77,14 @@ public class Transaccion implements Serializable {
         this.transaccionId = transaccionId;
     }
 
-    public Transaccion(Integer transaccionId, BigDecimal costoBanco, BigDecimal monto, Date fechaTransaccion, String motivo) {
+    public Transaccion(Integer transaccionId, BigDecimal costoBanco, BigDecimal monto, Date fechaTransaccion, String motivo, double saldoRestante, int actualizado) {
         this.transaccionId = transaccionId;
         this.costoBanco = costoBanco;
         this.monto = monto;
         this.fechaTransaccion = fechaTransaccion;
         this.motivo = motivo;
+        this.saldoRestante = saldoRestante;
+        this.actualizado = actualizado;
     }
 
     public Integer getTransaccionId() {
@@ -115,6 +125,22 @@ public class Transaccion implements Serializable {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public double getSaldoRestante() {
+        return saldoRestante;
+    }
+
+    public void setSaldoRestante(double saldoRestante) {
+        this.saldoRestante = saldoRestante;
+    }
+
+    public int getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(int actualizado) {
+        this.actualizado = actualizado;
     }
 
     public Cuenta getCuentaId() {

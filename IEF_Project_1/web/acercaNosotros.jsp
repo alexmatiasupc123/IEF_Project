@@ -69,10 +69,42 @@
 			
 
 				<!-- Container fluid Starts -->
-				<div class="container-fluid">
-                                    
-
-				</div>
+				<div class="container">
+                                                                        
+                                                             <h2>&nbsp;&nbsp;<i class="fa fa-hand-o-right"></i> Nuestra Visión</h2>
+                                                            <p>&nbsp;</p>
+                                                         
+                                                            <h5>&nbsp;&nbsp; “Hacer realidad las aspiraciones de progreso de personas y empresas para juntos construir un futuro extraordinario”</h5>
+                                                            <p>&nbsp;</p>
+                                                            <h2>&nbsp;&nbsp;<i class="fa fa-heartbeat"></i> Nuestros Valores</h2>
+                                                            <p>&nbsp;</p>
+                                                            <div class="row">
+                                                               <div class="col-md-7">                                                            
+                                                            <h5>&nbsp;&nbsp;<strong>Respeto:</strong> Tratamos a los demás de la forma en que deseamos ser tratados, fomentando la diversidad de opinión, trabajo en equipo y la comunicación abierta y transparente</h5>
+                                                               <p>&nbsp;</p>
+                                                            <h5>&nbsp;&nbsp;<strong>Integridad: </strong> Actuamos con una conducta responsable, honesta y auténtica en todas nuestras acciones</h5>
+                                                               <p>&nbsp;</p>
+                                                            <h5>&nbsp;&nbsp;<strong>Pasión:</strong> Trabajamos con entusiasmo que nace del orgullo de pertenecer a una empresa con auténtica vocación de servicio a sus clientes</h5>
+                                                               <p>&nbsp;</p>
+                                                            <h5>&nbsp;&nbsp;<strong>Emprendedor:</strong> Tenemos la actitud creativa y proactiva para enfrentar los desafíos de forma segura, responsable, y estable</h5>
+                                                               <p>&nbsp;</p>
+                                                            <h5>&nbsp;&nbsp;<strong>Excelencia:</strong> Nos esforzamos en ser los mejores en todo lo que hacemos, agregando valor y superando expectativas</h5>
+                                                            <p>&nbsp;</p>
+                                                            <h5>&nbsp;&nbsp;<strong>Análisis: </strong>Desarrollamos destrezas racionales para tomar decisiones basadas en lógica e información sólida, distinguiendo hechos de opiniones</h5>
+                                                               
+                                                               </div>
+                                                            </div>
+                                                              <h2>&nbsp;&nbsp;<i class="fa fa-map-marker"></i> Estamos Aquí ...</h2>
+                                                          
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <h5>Av. Lope De Vega Avenida Lope de Vega No. 13, Plaza Progreso Business Center, Santo Domingo, República Dominicana
++1 809-378-3264</h5>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                    </div>
 				<!-- Container fluid ends -->
                                 
                                                    

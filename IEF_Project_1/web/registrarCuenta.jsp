@@ -29,7 +29,7 @@
             <!-- Font Awesome -->
             <link href="assets/fonts/font-awesome.min.css" rel="stylesheet">
             
-              <!-- Bootstrap Datepicker CSS -->
+              <!-- Bootstrap Datepicker CSS -->10.5
             <link href="assets/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
             <link href="assets/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
         
@@ -116,7 +116,7 @@
                                                                                                                                                                    <div class="form-group">
 										    <label for="inputMonto" class="col-sm-2 control-label">Monto de Apertura</label>
 										    <div class="col-sm-4">
-										      <input type="number" class="form-control" name="monto" min="30" max="99999" name="telefono" id="inputMonto" placeholder="Monto de apertura" required>
+										      <input type="number" class="form-control" name="monto" min="30" max="99999" id="inputMonto" placeholder="Monto de apertura" required>
 										    </div>
 										  </div>                       
                                                                                                                                                                             

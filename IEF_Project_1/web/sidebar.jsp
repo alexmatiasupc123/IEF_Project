@@ -31,11 +31,7 @@
                                                                             <%} } %>
                                                                     </div>
 				<ul class="user-links">
-					<li>
-						<a href="profile.html">
-							<i class="fa fa-user text-success"></i>
-						</a>
-					</li>					
+										
 					<li>
 						<a href="ServletUsuario?accion=salir">
 							<i class="fa fa-sign-out text-danger"></i>

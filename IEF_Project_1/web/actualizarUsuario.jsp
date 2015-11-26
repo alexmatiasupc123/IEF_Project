@@ -101,7 +101,7 @@
 										<h5 class="blog-title"><i class="fa fa-user-md"></i>&nbsp Actualizar Usuario </h5>
 									</div>
 									<div class="blog-body">
-										<form class="form-horizontal" role="form" method="post" action="ServletUsuario">
+										<form class="form-horizontal" role="form" method="post" action="ServletUsuario" onsubmit="return validarFechaMenorActual(document.getElementById('inputFecha').value);">
 										  
                                                                                                                                                                      <!-- Nombres del Cliente -->
                                                                                                                                                                     <div class="form-group">
@@ -117,17 +117,7 @@
 										      <input type="text" class="form-control" name="apellidos" id="inputApellido" placeholder="Apellidos" value="<%= user.getApellido() %>" required >
 										    </div>
 										  </div>
-                                                                                                                                                                   <!-- FechaNacimiento del Cliente -->
-                                                                                                                                                                <div class="form-group">
-                                                                                                                                                                    <label  for="inputFecha" class="col-sm-2 control-label">Fecha de nacimiento</label>
-                                                                                                                                                                    <div class="col-sm-4">
-                                                                                                                                                                        <div class='input-group date' id='datetimepicker4'>
-                                                                                                                                                                            <input id="inputFecha" type="text" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" value="<%= fechanacimiento %>" required />
-                                                                                                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                                                                                                                                                            </span>
-                                                                                                                                                                        </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
+                                                                                                                                                                   
                                                                                                                                                                    
                                                                                                                                                                    <!-- DNI del Cliente -->
                                                                                                                                                                 <div class="form-group">
@@ -152,6 +142,18 @@
                                                                                                                                                                      <input type="email" value="<%= user.getEmail()%>" class="form-control" name="email" id="inputEmail" placeholder="Correo"  required >
 										    </div>
 										  </div>
+                                                                                    
+                                                                                                                                                                <!-- FechaNacimiento del Cliente -->
+                                                                                                                                                                <div class="form-group">
+                                                                                                                                                                    <label  for="inputFecha" class="col-sm-2 control-label">Fecha de nacimiento</label>
+                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                        <div class='input-group date' id='datetimepicker4'>
+                                                                                                                                                                            <input id="inputFecha" type="text" class="form-control" placeholder="Fecha de nacimiento" onkeydown="return false" name="fechanacimiento" value="<%= fechanacimiento %>" required />
+                                                                                                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                                                                            </span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                </div>
                                                                                                                                                                   
                                                                                                                                                                  
                                                                                                                                                                   <!-- Codigo Usuario -->
@@ -183,6 +185,12 @@
                                                                                                                                                                    <button type="submit" class="btn btn-success"><i class="fa fa-user-md"></i>&nbsp Actualizar</button>
                                                                                                                                                                         </div>
                                                                                                                                                                    </div>
+                                                                                  
+                                                                                                                                                                      <div class="row">&nbsp;</div>
+                                                                                                                                                                    <div class="row">&nbsp;</div>
+                                                                                                                                                                     <div class="row">&nbsp;</div>
+                                                                                                                                                                    <div class="row">&nbsp;</div>
+                                                                                                                                                                    
                                                                                                                                                                      
                                                                                                                                                                     
 										</form>
@@ -263,12 +271,34 @@
 				{
 					format: 'DD/MM/YYYY',					
 					locale: 'es'
-				});				
+                                                                              
+				}).val('');				
             });                    
                     
                     
         </script>
                 
+          <script type="text/javascript">
+            
+            function validarFechaMenorActual(date){
+      var x=new Date();
+      var fecha = date.split("/"); //lo convierte a string[]
+      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+      var today = new Date();
+      today.setFullYear(1997,12,31);
+      if (x >= today)
+      {
+          alert('Solo se permiten usuarios con el mínimo de 18 años de edad ');
+            return false;  
+        }
+      else
+      {
+            return true;
+        }
+       
+}
+            
+        </script>
         
     </body>
 </html>

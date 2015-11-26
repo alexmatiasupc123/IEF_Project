@@ -25,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import upc.edu.entitys.Cuenta;
+import upc.edu.entitys.Datos;
+import upc.edu.entitys.Transaccion;
 import upc.edu.entitys.Usuario;
 
 /**
@@ -59,9 +61,62 @@ public class ServletUsuario extends HttpServlet {
             request.setAttribute("accion", accion);
             
             if(accion.equals("principal"))
-                request.getRequestDispatcher("main.jsp").forward(request, response);
+            {
+                
+                  try{
+                                 EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
+                                 EntityManager em=emf.createEntityManager();
+
+                                  //int id=Integer.parseInt((String)request.getParameter("usuarioid"));
+                                 int id=Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                 Usuario user=em.find(Usuario.class,id);                              
+                                 
+                                 //NOTAR QUE PARA ASOCIACIONES Y RELACIONES POR ID SE MANDA EL OBJETO e_e
+                                 Query query=em.createQuery("SELECT c FROM Cuenta c where c.usuarioId = :user", Cuenta.class);
+                                 query.setParameter("user", user);
+                                                                 
+                                 List<Cuenta> lista=query.getResultList();   
+                                 em.close();
+
+                                 request.setAttribute("listaCuentas",lista);
+                                 
+
+                         }catch(Exception ex)
+                         {
+                             System.out.println("Error de conexión en el DASHBOARD READ GET");
+                             ex.printStackTrace();
+                             System.out.println(ex.getMessage());
+                         }                
+                
+                request.getRequestDispatcher("main.jsp").forward(request, response);                
+            }
             else if(accion.equals("estado"))
+            {
+                try{
+                                 EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
+                                 EntityManager em=emf.createEntityManager();
+
+                                  //int id=Integer.parseInt((String)request.getParameter("usuarioid"));
+                                 int id=Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                 Usuario user=em.find(Usuario.class,id);
+                                 
+                                 //NOTAR QUE PARA ASOCIACIONES Y RELACIONES POR ID SE MANDA EL OBJETO e_e
+                                 Query query=em.createQuery("SELECT c FROM Cuenta c where c.usuarioId = :user", Cuenta.class);
+                                 query.setParameter("user", user);
+                                                                 
+                                 List<Cuenta> lista=query.getResultList();   
+                                 em.close();
+
+                                 request.setAttribute("listaCuentas",lista);
+
+                         }catch(Exception ex)
+                         {
+                             System.out.println("Error de conexión en el Estado CTA READ GET");
+                             ex.printStackTrace();
+                             System.out.println(ex.getMessage());
+                         }
                 request.getRequestDispatcher("estadoCuenta.jsp").forward(request, response);
+            }
             else if(accion.equals("ingresar"))
             {
                   try{
@@ -91,7 +146,32 @@ public class ServletUsuario extends HttpServlet {
                 request.getRequestDispatcher("ingresarMonto.jsp").forward(request, response);
             }
             else if(accion.equals("retirar"))
+            {
+                 try{
+                                 EntityManagerFactory emf=Persistence.createEntityManagerFactory("IEF_Project_1PU");
+                                 EntityManager em=emf.createEntityManager();
+
+                                  //int id=Integer.parseInt((String)request.getParameter("usuarioid"));
+                                 int id=Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                 Usuario user=em.find(Usuario.class,id);
+                                 
+                                 //NOTAR QUE PARA ASOCIACIONES Y RELACIONES POR ID SE MANDA EL OBJETO e_e
+                                 Query query=em.createQuery("SELECT c FROM Cuenta c where c.usuarioId = :user", Cuenta.class);
+                                 query.setParameter("user", user);
+                                                                 
+                                 List<Cuenta> lista=query.getResultList();   
+                                 em.close();
+
+                                 request.setAttribute("listaCuentas",lista);
+
+                         }catch(Exception ex)
+                         {
+                             System.out.println("Error de conexión en el Retirar Mto READ GET");
+                             ex.printStackTrace();
+                             System.out.println(ex.getMessage());
+                         }             
                 request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);
+            }
             // <editor-fold defaultstate="collapsed" desc="Administracion de Usuarios">
             else if(accion.equals("adminu"))
             {
@@ -439,7 +519,20 @@ public class ServletUsuario extends HttpServlet {
                                 em.persist(nuevaCuenta);
                                 em.getTransaction().commit();
                                 
-                                
+                                //_______AQUI CAMBIE
+                                /*
+                                 Transaccion interesGanado=new Transaccion();
+                                   interesGanado.setMonto(monto);
+                                   interesGanado.setCuentaId(nuevaCuenta);
+                                   interesGanado.setFechaTransaccion(new Date());
+                                    interesGanado.setMotivo("Apertura");
+                                    interesGanado.setSaldoRestante(monto.doubleValue());
+                                    interesGanado.setCostoBanco(BigDecimal.ZERO);
+                                     interesGanado.setActualizado(0);
+                                     
+                                     em.getTransaction().begin();
+                                     em.persist(interesGanado);
+                                     em.getTransaction().commit(); */
                                 
                                   request.setAttribute("mensajeConfirmacion", "Usuario registrado correctamente\nSe generó la cuenta: "+textoNumCuenta(nuevaCuenta.getNroCuenta()));
                          break;
@@ -509,6 +602,30 @@ public class ServletUsuario extends HttpServlet {
                     sesion.setAttribute("rol", lista.get(0).getRol());
                     sesion.setAttribute("imagen_url", lista.get(0).getImagenUrl());
                     sesion.setAttribute("id", lista.get(0).getUsuarioId());
+                    
+                    Query query2=em.createQuery("SELECT d FROM Datos d", Datos.class);
+                    List<Datos> listaDatos=query2.getResultList();
+                    
+                    if(listaDatos.size()>0)
+                    {
+                            double tasa=listaDatos.get(listaDatos.size()-1).getTasa().doubleValue();
+                           double costo=listaDatos.get(listaDatos.size()-1).getCosto().doubleValue();
+                            sesion.setAttribute("tdcto", tasa); //0.03% por dia
+                            sesion.setAttribute("costo",costo);
+                    }
+                    
+                      //int id=Integer.parseInt((String)request.getParameter("usuarioid"));
+                                 int id=Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                 Usuario objUser=em.find(Usuario.class,id);                              
+                                 
+                                 //NOTAR QUE PARA ASOCIACIONES Y RELACIONES POR ID SE MANDA EL OBJETO e_e
+                                 Query query3=em.createQuery("SELECT c FROM Cuenta c where c.usuarioId = :user", Cuenta.class);
+                                 query3.setParameter("user", objUser);
+                                                                 
+                                 List<Cuenta> listaCuentas=query3.getResultList();   
+                                 em.close();
+
+                                 request.setAttribute("listaCuentas",listaCuentas);
 
                     request.getRequestDispatcher("main.jsp").forward(request, response);
 

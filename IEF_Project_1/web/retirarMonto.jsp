@@ -4,6 +4,7 @@
     Author     : Alex
 --%>
 
+<%@page import="upc.edu.entitys.Cuenta"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,6 +31,20 @@
         
         
          <%@include file="validarSesion.jsp" %>
+         
+         <%
+                        List<Cuenta> lista=(List)request.getAttribute("listaCuentas");
+                           String mensajeConfirmacion=(String)request.getAttribute("mensajeConfirmacion");       
+                           String mensajeConfirmacionPeligro=(String)request.getAttribute("mensajeConfirmacionPeligro");
+                %>
+                
+                 <%!
+                    public String textoNumCuenta(String nro)
+                    {
+                        return nro.substring(0,3)+"-"+nro.substring(3,11)+"-0-"+nro.substring(12,14);
+                    }
+                    
+              %>
       
        
     </head>   
@@ -76,33 +91,47 @@
 						
 						<!-- Row Starts -->
 						<div class="row">
+                                                                                                        <%if(mensajeConfirmacion!=null){ %>
+                                                                                                                <div class="alert alert-success">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+												<strong>Bien Hecho!</strong> <%= mensajeConfirmacion %>.
+							</div>
+                                                                                                                <% }%>
+                                                                                                                <%if(mensajeConfirmacionPeligro!=null){ %>
+                                                                                                                <div class="alert alert-danger">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+												<strong>Atención!</strong> <%= mensajeConfirmacionPeligro %>.
+							</div>
+                                                                                                                <% }%>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
-										<h5 class="blog-title">Ingrese el monto a retirar</h5>
+										<h5 class="blog-title"><i class="fa fa-minus-square"></i>&nbsp Ingrese el monto a retirar</h5>
 									</div>
 									<div class="blog-body">
-										<form class="form-horizontal" role="form">
+										<form class="form-horizontal" role="form" method="post" action="ServletCuenta">
 										  <div class="form-group">
 										    <label for="inputEmail3" class="col-sm-2 control-label">Monto de retiro</label>
 										    <div class="col-sm-4">
-										      <input type="number" min="0" step="0.5" class="form-control" id="inputEmail3" placeholder="S/.">
+										      <input type="number" min="30" step="0.5" class="form-control" name="monto" id="inputEmail3" placeholder="S/." required>
+                                                                                                                                                                        <input type="hidden" value="retirar" name="operacionCuenta"/>
 										    </div>
 										  </div>
                                                                                                                                                                       <div class="form-group">
                                                                                                                                                                        <label  for="inputCuenta" class="col-sm-2 control-label">Nro de Cuenta</label>
                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                       <select class="form-control" id="inputCuenta">
+                                                                                                                                                                       <select class="form-control" id="inputCuenta" name="cuentaid" required>
 												<option value="" disabled selected>Seleccione una cuenta</option>
-												<option>1</option>
-												<option>2</option>
+												<% for(int i=0;i<lista.size();i++){%>
+                                                                                                                                                                                <option value="<%= lista.get(i).getCuentaId()%>"><%= textoNumCuenta(lista.get(i).getNroCuenta()) %></option>
+                                                                                                                                                                                <% } %>
 											</select>
                                                                                                                                                                                </div>
 										</div>
 										  <div class="form-group">
 										    <label for="inputPassword3" class="col-sm-2 control-label">Motivo</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                    <textarea class="form-control" rows="5" id="inputPassword3" placeholder="Detalle o descripción "></textarea>
+                                                                                                                                                                    <textarea name="motivo" class="form-control" rows="5" id="inputPassword3" placeholder="Detalle o descripción " required></textarea>
                                                                                                                                                                     
 										    </div>
 										  </div>
