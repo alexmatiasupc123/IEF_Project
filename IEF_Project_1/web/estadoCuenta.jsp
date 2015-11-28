@@ -4,6 +4,8 @@
     Author     : Alex
 --%>
 
+<%@page import="java.math.RoundingMode"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="upc.edu.entitys.Transaccion"%>
 <%@page import="upc.edu.entitys.Cuenta"%>
 <%@page import="java.util.List"%>
@@ -13,7 +15,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido :)</title>        
+           <% String nombreCompleto=(String)session.getAttribute("nombres")+" "+(String)session.getAttribute("apellidos"); %>
+        <title>Bienvenido, <%= nombreCompleto %> </title>       
         <link rel="icon" type="text/x-icon" href="assets/img/person.ico"/>       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
@@ -135,7 +138,9 @@
                                                                                                                                                                  </div>
                                                                                                                                                                  <div class="row">
                                                                                                                                                                      <div class="col-md-6"><h5><%= textoNumCuenta(objCuenta.getNroCuenta())  %></h5></div>
-                                                                                                                                                                     <div class="col-md-6"><h5>S/. <%= objCuenta.getMontoNeto()%></h5></div>
+                                                                                                                                                                     
+                                                                                                                                                                    
+                                                                                                                                                                     <div class="col-md-6"><h5>S/. <%= objCuenta.getMontoNeto().setScale(2, RoundingMode.HALF_DOWN) %></h5></div>
                                                                                                                                                                  </div>
                                                                                                                                                                  <p>&nbsp;</p>
                                                                                                                                                                  <% } %>
@@ -154,8 +159,11 @@
                         <tr>
                           <td ><%= listaTran.get(i).getFechaTransaccion().toGMTString() %></td>
                           <td ><%= listaTran.get(i).getMotivo() %></td>
-                          <td >S/. <%= listaTran.get(i).getMonto().doubleValue() %></td>                          
-                          <td >S/. <%= listaTran.get(i).getSaldoRestante()%></td>
+                          <td >S/. <%= listaTran.get(i).getMonto().setScale(2, RoundingMode.HALF_DOWN) %></td>                          
+                          <%
+                            BigDecimal saldoRes=new BigDecimal(listaTran.get(i).getSaldoRestante());
+                          %>
+                          <td >S/. <%= saldoRes.setScale(2, RoundingMode.HALF_DOWN) %></td>
                         </tr>
                         <% } } %>
                       </tbody>

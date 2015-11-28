@@ -1,7 +1,8 @@
 <!-- Left sidebar starts -->
 
                                 <% 
-                                        String nombre=(String)session.getAttribute("nombre");
+                                        String nombres=(String)session.getAttribute("nombres");
+                                        String apellidos=(String)session.getAttribute("apellidos");
                                         String rol=(String)session.getAttribute("rol");
                                         String imagen_url=(String)session.getAttribute("imagen_url");
                                         
@@ -22,7 +23,7 @@
 					<img src="<%= imagen_url  %>" alt="Current User">
 					<span class="busy"></span>
 				</div>
-				<div class="user-name">Hola <%= nombre %> :)</div>
+                                        <div class="user-name">Hola <br/> <%= nombres %> <br/> <%= apellidos %> </div>
                                                                 <div class="user-name">
                                                                     <%if(rol!=null){ if(rol.equals("CLI")){ %>
                                                                     <b><%= "Cliente" %></b>

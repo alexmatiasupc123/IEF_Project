@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido :)</title>        
+           <% String nombreCompleto=(String)session.getAttribute("nombres")+" "+(String)session.getAttribute("apellidos"); %>
+        <title>Bienvenido, <%= nombreCompleto %> </title>        
         <link rel="icon" type="text/x-icon" href="assets/img/person.ico"/>       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->

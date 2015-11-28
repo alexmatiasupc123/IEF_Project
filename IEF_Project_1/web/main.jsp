@@ -2,7 +2,7 @@
 
 <%@page import="upc.edu.entitys.Cuenta"%>
 
-<% String nombreCompleto=(String)session.getAttribute("nombre"); %>
+<% String nombreCompleto=(String)session.getAttribute("nombres")+" "+(String)session.getAttribute("apellidos"); %>
                                         
 <%@page import="java.util.List"%>
 
@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido, Sr. <%= nombreCompleto %> </title>        
+        <title>Bienvenido, <%= nombreCompleto %> </title>         
         <link rel="icon" type="text/x-icon" href="assets/img/person.ico"/>       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->

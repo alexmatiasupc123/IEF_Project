@@ -82,7 +82,7 @@ public class ServletCuenta extends HttpServlet {
                                 em.getTransaction().begin();
                                 em.persist(cuenta);
                                 em.getTransaction().commit();    
-                                /*
+                                
                                 //_______________AQUI CAMBIE
                                 Transaccion interesGanado=new Transaccion();
                                    interesGanado.setMonto(monto);
@@ -95,7 +95,7 @@ public class ServletCuenta extends HttpServlet {
                                 
                                      em.getTransaction().begin();
                                      em.persist(interesGanado);
-                                     em.getTransaction().commit(); */
+                                     em.getTransaction().commit(); 
                                 
                                   request.setAttribute("mensajeConfirmacion", "Cuenta registrada correctamente");
                          break;
@@ -203,6 +203,7 @@ public class ServletCuenta extends HttpServlet {
                                  em.close();
 
                                  request.setAttribute("listaCuentas",lista);
+                                     request.setAttribute("accion","retirar" );
                                      request.setAttribute("mensajeConfirmacionPeligro", "Monto solicitado excede sus fondos");    request.getRequestDispatcher("retirarMonto.jsp").forward(request, response); 
                                      return;
                                 }
@@ -249,8 +250,8 @@ public class ServletCuenta extends HttpServlet {
                                  
                             switch(operacionCuenta)
                         {
-                            case "ingresar" :  request.setAttribute("mensajeConfirmacion", "Monto ingresado correctamente");    request.getRequestDispatcher("ingresarMonto.jsp").forward(request, response);    break;
-                            case "retirar" :      request.setAttribute("mensajeConfirmacion", "Monto retirado correctamente");    request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);  break;
+                            case "ingresar" :  request.setAttribute("accion","ingresar" ); request.setAttribute("mensajeConfirmacion", "Monto ingresado correctamente");    request.getRequestDispatcher("ingresarMonto.jsp").forward(request, response);    break;
+                            case "retirar" :      request.setAttribute("accion","retirar" ); request.setAttribute("mensajeConfirmacion", "Monto retirado correctamente");    request.getRequestDispatcher("retirarMonto.jsp").forward(request, response);  break;
                         }
                                     
 
@@ -324,6 +325,7 @@ public class ServletCuenta extends HttpServlet {
                                em.persist(nuevaTran);
                         em.getTransaction().commit();              
                         
+                        listaTran=queryT.getResultList();
                         
                            }    
                        }
@@ -357,7 +359,7 @@ public class ServletCuenta extends HttpServlet {
          }
            //</editor-fold>
          
-          // <editor-fold defaultstate="collapsed" desc="Estado de Cuenta">
+          // <editor-fold defaultstate="collapsed" desc="VAN">
          String van=(String)request.getParameter("van");
          if(van!=null)
          {

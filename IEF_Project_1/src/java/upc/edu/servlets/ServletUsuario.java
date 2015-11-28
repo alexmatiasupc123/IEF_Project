@@ -188,7 +188,7 @@ public class ServletUsuario extends HttpServlet {
                         user.setEstado("INA");
                         em.getTransaction().commit();
 
-                         Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado ", Usuario.class);
+                         Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado and u.rol='CLI'", Usuario.class);
                                 query.setParameter("estado", "ACT");
                                 List<Usuario> lista=query.getResultList();   
                                 em.close();
@@ -229,7 +229,7 @@ public class ServletUsuario extends HttpServlet {
 
 
 
-                                 Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado ", Usuario.class);
+                                 Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado and u.rol='CLI'", Usuario.class);
                                  query.setParameter("estado", "ACT");
                                  List<Usuario> lista=query.getResultList();   
                                  em.close();
@@ -520,7 +520,7 @@ public class ServletUsuario extends HttpServlet {
                                 em.getTransaction().commit();
                                 
                                 //_______AQUI CAMBIE
-                                /*
+                                
                                  Transaccion interesGanado=new Transaccion();
                                    interesGanado.setMonto(monto);
                                    interesGanado.setCuentaId(nuevaCuenta);
@@ -532,7 +532,7 @@ public class ServletUsuario extends HttpServlet {
                                      
                                      em.getTransaction().begin();
                                      em.persist(interesGanado);
-                                     em.getTransaction().commit(); */
+                                     em.getTransaction().commit(); 
                                 
                                   request.setAttribute("mensajeConfirmacion", "Usuario registrado correctamente\nSe generó la cuenta: "+textoNumCuenta(nuevaCuenta.getNroCuenta()));
                          break;
@@ -558,7 +558,7 @@ public class ServletUsuario extends HttpServlet {
                             request.setAttribute("mensajeConfirmacion", "Usuario actualizado correctamente");
                           break;
                     }           
-                            Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado ", Usuario.class);
+                            Query query=em.createQuery("SELECT u FROM Usuario u where u.estado= :estado and u.rol='CLI'", Usuario.class);
                             query.setParameter("estado", "ACT");
                             List<Usuario> lista=query.getResultList();   
                             em.close();
@@ -598,7 +598,8 @@ public class ServletUsuario extends HttpServlet {
                     HttpSession sesion=request.getSession(true);
 
                     sesion.setAttribute("usuario", user);
-                    sesion.setAttribute("nombre", lista.get(0).getNombre()+" "+lista.get(0).getApellido());
+                    sesion.setAttribute("nombres", lista.get(0).getNombre());
+                    sesion.setAttribute("apellidos", lista.get(0).getApellido()); 
                     sesion.setAttribute("rol", lista.get(0).getRol());
                     sesion.setAttribute("imagen_url", lista.get(0).getImagenUrl());
                     sesion.setAttribute("id", lista.get(0).getUsuarioId());

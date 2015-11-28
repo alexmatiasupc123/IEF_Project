@@ -11,7 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido :)</title>        
+         <% String nombreCompleto=(String)session.getAttribute("nombres")+" "+(String)session.getAttribute("apellidos"); %>
+        <title>Bienvenido, <%= nombreCompleto %> </title>       
         <link rel="icon" type="text/x-icon" href="assets/img/person.ico"/>       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
@@ -155,7 +156,7 @@
                                                                                                                                                                     <div class="form-group">
 										    <label for="inputUsuario" class="col-sm-2 control-label">Usuario</label>
 										    <div class="col-sm-4">
-                                                                                                                                                                    <input style="background-color: lavender;" type="text" class="form-control" name="usuario" id="inputUsuario" value="<%=codigo%>" readonly >
+                                                                                                                                                                    <input style="background-color: lavender;" type="text" class="form-control" name="usuario" id="inputUsuario" value="<%=codigo%>"  readonly>
                                                                                                                                                                     <input type="hidden" name="accion" value="insert" >
 										    </div>
 										  </div>
